@@ -64,7 +64,6 @@ public class Character : MonoBehaviour
         bulletInstance.transform.SetParent(null);
         bulletInstance.GetComponent<Rigidbody>().AddForce(bulletInstance.transform.forward * 50.0f);
 
-        Time.timeScale = 0.25f;
     }
 
     private void FixedUpdate() { }
