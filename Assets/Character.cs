@@ -59,10 +59,11 @@ public class Character : MonoBehaviour
     void SpawnProjectile()
     {
         var bulletInstance = Instantiate(bullet, pivot);
+        bulletInstance.SetActive(true);
         bulletInstance.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
         bulletInstance.transform.localRotation = new Quaternion(0, 0, 0, 0);
         bulletInstance.transform.SetParent(null);
-        bulletInstance.GetComponent<Rigidbody>().AddForce(bulletInstance.transform.forward * 50.0f);
+        bulletInstance.GetComponent<Rigidbody>().AddForce(bulletInstance.transform.forward * 150.0f);
 
     }
 
