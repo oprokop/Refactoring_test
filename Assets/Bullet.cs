@@ -12,10 +12,12 @@ public struct Data
     public GameObject ExplosionVFX;
     public float LiveTime;
     public float ReactionTime;
+    public int GunIndex;
 }
 
 public class Bullet : MonoBehaviour
 {
+    public int gun = 0;
     public List<Data> Data;
 
     void Start() 
@@ -55,4 +57,5 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         };
     }
+
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletSwitcherScript : MonoBehaviour
 {
-    public GameObject bullet;
+    public Bullet bullet;
     
     void Start() {  }
 
@@ -14,7 +14,8 @@ public class BulletSwitcherScript : MonoBehaviour
     {
         if (other.tag == "Character")
         {
-            other.gameObject.GetComponent<Character>().bullet = bullet;
+            other.gameObject.GetComponent<Character>().bullet = bullet.gameObject;
+            other.gameObject.GetComponent<Character>().newGun = bullet.gun;
         }
     }
 }
