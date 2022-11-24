@@ -332,11 +332,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1604ea1c8e09c5e48ba804c8cb884f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effects:
+  Data:
   - Key: Bullet
-    VFX: {fileID: 0}
-    LiveTime: 0
+    StartVFX: {fileID: 5339739117810204693, guid: 26e1cb216e3635e4a820f58a1118d6b9, type: 3}
+    ExplosionVFX: {fileID: 2504214343621411470, guid: 3ed0d324122d7b24eaec75c55c74aafc, type: 3}
+    LiveTime: 0.1
     ReactionTime: 0
+  - Key: Grenade
+    StartVFX: {fileID: 5339739117810204693, guid: 26e1cb216e3635e4a820f58a1118d6b9, type: 3}
+    ExplosionVFX: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}
+    LiveTime: 1.5
+    ReactionTime: 1
+  - Key: Rocket
+    StartVFX: {fileID: 5339739117810204693, guid: 26e1cb216e3635e4a820f58a1118d6b9, type: 3}
+    ExplosionVFX: {fileID: 725748389856807714, guid: 4bda94453d2ca7444a0fff05b2d425f5, type: 3}
+    LiveTime: 1.5
+    ReactionTime: 0.1
 --- !u!1 &177011490
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,11 +548,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1604ea1c8e09c5e48ba804c8cb884f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effects:
-  - Key: Rocket
-    VFX: {fileID: 0}
-    LiveTime: 0
+  Data:
+  - Key: Bullet
+    StartVFX: {fileID: 5339739117810204693, guid: 26e1cb216e3635e4a820f58a1118d6b9, type: 3}
+    ExplosionVFX: {fileID: 2504214343621411470, guid: 3ed0d324122d7b24eaec75c55c74aafc, type: 3}
+    LiveTime: 0.1
     ReactionTime: 0
+  - Key: Grenade
+    StartVFX: {fileID: 5339739117810204693, guid: 26e1cb216e3635e4a820f58a1118d6b9, type: 3}
+    ExplosionVFX: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}
+    LiveTime: 1.5
+    ReactionTime: 1
+  - Key: Rocket
+    StartVFX: {fileID: 5339739117810204693, guid: 26e1cb216e3635e4a820f58a1118d6b9, type: 3}
+    ExplosionVFX: {fileID: 725748389856807714, guid: 4bda94453d2ca7444a0fff05b2d425f5, type: 3}
+    LiveTime: 1.5
+    ReactionTime: 0.1
 --- !u!1 &504370725
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,7 +681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1923314958510664, guid: 9600bb0091acb80408dd622e882c5ce5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4724497311455830, guid: 9600bb0091acb80408dd622e882c5ce5, type: 3}
       propertyPath: m_RootOrder
@@ -951,7 +973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1832868274295220, guid: 7791af2a4983aa543a539b9502db5168, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4169104563862338, guid: 7791af2a4983aa543a539b9502db5168, type: 3}
       propertyPath: m_RootOrder
@@ -1312,7 +1334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1098318907123292, guid: 34a5e34bd888e0b4883bb80aa3cd437d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4265910001507952, guid: 34a5e34bd888e0b4883bb80aa3cd437d, type: 3}
       propertyPath: m_RootOrder
@@ -1870,25 +1892,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1604ea1c8e09c5e48ba804c8cb884f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effects:
-  - Key: Grenade
-    VFX: {fileID: 0}
-    LiveTime: 0
+  Data:
+  - Key: Bullet
+    StartVFX: {fileID: 5339739117810204693, guid: 26e1cb216e3635e4a820f58a1118d6b9, type: 3}
+    ExplosionVFX: {fileID: 2504214343621411470, guid: 3ed0d324122d7b24eaec75c55c74aafc, type: 3}
+    LiveTime: 0.1
     ReactionTime: 0
---- !u!114 &2112060165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112060163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3edfc3341883814cb8cf2fff1ab9d43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetTime: 0
-  CurrentTime: 0
+  - Key: Grenade
+    StartVFX: {fileID: 5339739117810204693, guid: 26e1cb216e3635e4a820f58a1118d6b9, type: 3}
+    ExplosionVFX: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}
+    LiveTime: 1.5
+    ReactionTime: 1
+  - Key: Rocket
+    StartVFX: {fileID: 5339739117810204693, guid: 26e1cb216e3635e4a820f58a1118d6b9, type: 3}
+    ExplosionVFX: {fileID: 725748389856807714, guid: 4bda94453d2ca7444a0fff05b2d425f5, type: 3}
+    LiveTime: 1.5
+    ReactionTime: 0.1
 --- !u!1001 &5448307984824839061
 PrefabInstance:
   m_ObjectHideFlags: 0
