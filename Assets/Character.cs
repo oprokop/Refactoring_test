@@ -38,7 +38,6 @@ public class Character : MonoBehaviour
         var animator = GetComponent<Animator>();
         animator.SetFloat("direction", inputAngle / 180.0f);
         animator.SetFloat("idle", inputDirection.magnitude);
-        Debug.Log(inputDirection + " " + inputAngle);
         movement = Quaternion.AngleAxis(transformCamera.rotation.eulerAngles.y, Vector3.up) * movement;
 
 
@@ -61,7 +60,7 @@ public class Character : MonoBehaviour
         animator.SetTrigger("shot");
         yield return new WaitForSeconds(0.1f);
         SpawnProjectile();
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.75f);
         shot = false;
     }
 

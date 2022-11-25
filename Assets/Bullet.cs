@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour
 {
     public int gun = 0;
     public List<Data> Data;
+    public bool isCollided = false;
 
     void Start() 
     {
@@ -38,6 +39,11 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (isCollided == true)
+        {
+            return;
+        }
+        isCollided = true;
         var data = Data.Single(s => gameObject.name.Contains(s.Key));
 
         var timer = gameObject.AddComponent<Timer>();
