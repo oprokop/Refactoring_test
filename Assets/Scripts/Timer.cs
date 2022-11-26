@@ -10,8 +10,6 @@ public class Timer : MonoBehaviour
     public float TargetTime;
     public float CurrentTime;
 
-    void Start() { }
-
     void Update() 
     {
         CurrentTime += Time.deltaTime;

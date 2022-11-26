@@ -7,61 +7,61 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public float gravity = -9.81f;
-    public float speed = 10.0f;
+    public float speed = 20.0f;
     public Transform transformCamera;
     public Transform pivot;
     public GameObject bullet;
     public Transform[] Guns;
 
-    private float ySpeed;
-    private bool isJump;
-    private bool shot = false;
+    private bool isShot = false;
     private bool isSwitchingGun = false;
 
     private int _currentGun = 0;
     public int newGun = -1;
 
-    void Start() { }
+    [SerializeField] CharacterController controller;
+    [SerializeField]Animator animator;
+
+    public CharacterController Controller { get { return controller = controller ?? GetComponent<CharacterController>(); } }
+    public Animator Animator { get { return animator = animator ?? GetComponent<Animator>(); } }
 
     void Update()
     {
-        var controller = GetComponent<CharacterController>();
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
         float rotation = Input.GetAxis("Mouse X");
-
 
         Vector3 inputDirection = new Vector3(horizontal, 0.0f, vertical);
         Vector3 movement = new Vector3(horizontal * speed, gravity, vertical * speed);
         
         var inputAngle = horizontal < 0.0f ? -Vector3.Angle(Vector3.forward, inputDirection) : Vector3.Angle(Vector3.forward, inputDirection);
-        var animator = GetComponent<Animator>();
-        animator.SetFloat("direction", inputAngle / 180.0f);
-        animator.SetFloat("idle", inputDirection.magnitude);
+        Animator.SetFloat("direction", inputAngle / 180.0f);
+        Animator.SetFloat("idle", inputDirection.magnitude);
         movement = Quaternion.AngleAxis(transformCamera.rotation.eulerAngles.y, Vector3.up) * movement;
 
 
         if (newGun != -1 && _currentGun != newGun && !isSwitchingGun )
         {
-            StartCoroutine(SwitchGun(animator, newGun));
+            StartCoroutine(SwitchGun(Animator, newGun));
         }
 
-        controller.Move(movement * Time.deltaTime);
-        controller.transform.Rotate(Vector3.up, rotation);
-        if(Input.GetMouseButtonDown(0) && shot == false && !isSwitchingGun)
+        Controller.Move(movement * Time.deltaTime);
+        Controller.transform.Rotate(Vector3.up, rotation);
+
+        if(Input.GetMouseButtonDown(0) && !isShot && !isSwitchingGun)
         {
-            StartCoroutine(StartShotAnimation(animator));
+            StartCoroutine(StartShotAnimation(Animator));
         }
     }
 
     IEnumerator StartShotAnimation(Animator animator)
     {
-        shot = true;
+        isShot = true;
         animator.SetTrigger("shot");
         yield return new WaitForSeconds(0.1f);
         SpawnProjectile();
         yield return new WaitForSeconds(0.75f);
-        shot = false;
+        isShot = false;
     }
 
     IEnumerator SwitchGun(Animator animator, int gun)
@@ -84,10 +84,5 @@ public class Character : MonoBehaviour
         var gaun = Guns[_currentGun].GetComponent<Gun>();
         bulletInstance.transform.Rotate(Vector3.left, gaun.Angle);
         bulletInstance.GetComponent<Rigidbody>().AddForce(bulletInstance.transform.forward * gaun.Force);
-
     }
-
-    private void FixedUpdate() { }
-
-    private void LateUpdate() { }
 }

@@ -2,15 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletSwitcherScript : MonoBehaviour
+public class BulletSwitcher : MonoBehaviour
 {
     public Bullet bullet;
-    
-    void Start() {  }
 
-    void Update() { }
-
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Character")
         {

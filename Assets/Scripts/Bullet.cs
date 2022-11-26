@@ -21,22 +21,6 @@ public class Bullet : MonoBehaviour
     public List<Data> Data;
     public bool isCollided = false;
 
-    void Start() 
-    {
-        var data = Data.Single(s => gameObject.name.Contains(s.Key));
-        var effectInstance = Instantiate(data.StartVFX, transform.position, Quaternion.identity);
-        Destroy(effectInstance, effectInstance.GetComponent<ParticleSystem>().main.duration);
-
-        var timer = gameObject.AddComponent<Timer>();
-        timer.TargetTime = 3.0f;
-        timer.OnTime = () =>
-        {
-            Destroy(gameObject);
-        };
-    }
-
-    void Update() { }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (isCollided == true)
@@ -48,7 +32,7 @@ public class Bullet : MonoBehaviour
 
         var timer = gameObject.AddComponent<Timer>();
         timer.TargetTime = data.ReactionTime;
-        timer.OnTime = () => 
+        timer.OnTime = () =>
         {
             var data = Data.Single(s => gameObject.name.Contains(s.Key));
             var effectInstance = Instantiate(data.ExplosionVFX, collision.GetContact(0).point, Quaternion.identity);
@@ -63,5 +47,5 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         };
     }
-
 }
+

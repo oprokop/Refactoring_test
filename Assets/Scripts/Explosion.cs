@@ -11,10 +11,7 @@ public class Explosion : MonoBehaviour
 
     float t;
     bool isActive;
-    // Start is called before the first frame update
-    void Start() { }
-
-    // Update is called once per frame
+   
     void Update() 
     {
         if (isActive) t += Time.deltaTime;
@@ -28,8 +25,6 @@ public class Explosion : MonoBehaviour
             Destroy(this);
         }
     }
-
-    void FixedUpdate() { }
 
     private void OnCollisionStay(Collision collision)
     {
